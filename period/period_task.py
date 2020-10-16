@@ -433,4 +433,3 @@ class SchedulerResume(Resource):
         else:
             db.close_mysql()
             return {"status": False, "message": result}, 500
-
