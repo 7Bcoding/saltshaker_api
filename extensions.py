@@ -49,7 +49,7 @@ STATE_RUNNING = 1
 STATE_PAUSED = 2
 
 
-# 重写BaseScheduler类的_process_jobs方法，使用redis setnx 达到互斥，确保后端存储的schedule只运行一次，
+# 重写BaseScheduler类的_process_jobs方法，使用redis setnx 达到互斥，确保后端存储的scheduler只运行一次，
 # 又能保证每个进程可以独立接收新的调度任务
 class MutexBaseScheduler(BaseScheduler):
     def _process_jobs(self):
