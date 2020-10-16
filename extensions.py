@@ -14,7 +14,7 @@ from threading import Thread, Event
 import six
 from pytz import utc
 from apscheduler.events import JobSubmissionEvent, EVENT_JOB_SUBMITTED, EVENT_JOB_MAX_INSTANCES
-
+import pytz
 
 logger = loggers()
 
@@ -191,7 +191,8 @@ class MutexAPScheduler(APScheduler):
         self._scheduler = MutexBackgroundScheduler(jobstores=Config.SCHEDULER_JOBSTORES,
                                                    executors=Config.SCHEDULER_EXECUTORS,
                                                    job_defaults=Config.SCHEDULER_JOB_DEFAULTS,
-                                                   timezone=utc)
+                                                   # timezone=utc
+                                                   timezone=pytz.timezone('Asia/Shanghai'))
 
 
 scheduler = MutexAPScheduler()

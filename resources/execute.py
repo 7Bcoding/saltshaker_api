@@ -82,6 +82,7 @@ class ExecuteShell(Resource):
             return status, 500
 
 
+# 执行SLS模板
 class ExecuteSLS(Resource):
     @access_required(role_dict["common_user"])
     def post(self):
@@ -166,6 +167,7 @@ class ExecuteGroups(Resource):
             return {"data": groups_list, "status": True, "message": ""}, 200
 
 
+# 验证ACL，防止违禁命令执行
 def verify_acl(acl_list, command):
     if acl_list:
         db = DB()

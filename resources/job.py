@@ -62,9 +62,9 @@ class JobManager(Resource):
                 if result.get("status") is False:
                     return result, 500
                 for jid, info in result.items():
-                            # 不能直接把info放到append中
-                            info.update({"Jid": jid})
-                            job_active_list.append(info)
+                    # 不能直接把info放到append中
+                    info.update({"Jid": jid})
+                    job_active_list.append(info)
             return {"data": job_active_list, "status": True, "message": ""}, 200
 
     @access_required(role_dict["common_user"])

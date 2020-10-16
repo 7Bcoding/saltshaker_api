@@ -3,6 +3,7 @@ from extensions import celery
 from tasks.worker import sse_worker, job_worker, grains_worker
 
 
+# celery通用任务模块
 @celery.task
 def event_to_mysql(product):
     sse_worker(product)
